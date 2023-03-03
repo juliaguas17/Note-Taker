@@ -20,7 +20,7 @@ app.get('/notes', (req, res) =>
 
 // GET method for fetching data
 app.get('/api/notes', (req, res) => {
-    fs.readFile('./db/db', 'utf8', (err, data) => {
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
       if (err) {
         console.log(err);
         res.json(err);
@@ -33,7 +33,7 @@ app.get('/api/notes', (req, res) => {
 
 // POST method
 app.post('/notes', (req, res) => {
-    fs.readFile('./db/db', 'utf8', (err, data) => {
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
       if (err) {
         console.log(err);
         res.json(err);

@@ -2,13 +2,13 @@
     "notes": [
         {
             "title": "Note Taker 📝",
-            "text": "You can add notes by clicking the pencil icon at the top of the page. Save your notes by clicking the save button.",
+            "text": "You can add notes by clicking the '+' icon at the top of the page.",
             "id": "0"
         },
         {
-            "title": "Deleting Notes...",
-            "text": "Click the trashcan icon next to a note to delete it.",
-            "id": "1"
+            "title": "Test Note",
+            "text": "Testing...",
+            "id": 1
         }
     ]
 }
