@@ -1,4 +1,5 @@
 const router = require("express").Router();
+
 const {
     notes
 } = require('Note-Taker\db\db.json');
