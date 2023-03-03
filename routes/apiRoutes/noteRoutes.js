@@ -8,19 +8,21 @@ const {
     deleteNote
 } = require('Note-Taker\lib\noteFunctions.js');
 
-
-router.get('/notes', (req, res) => {
+//GET
+router.get('api/notes', (req, res) => {
     let saved = notes;
     res.json(saved);
 })
 
+//POST
 router.post('/notes', (req, res) => {
     req.body.id = notes.length.toString();
     let note = createNote(req.body, notes);
     res.json(note);
 })
 
-router.delete('/notes/:id', (req, res) => {
+//DELETE
+router.delete('api/notes/:id', (req, res) => {
     deleteNote(notes, req.params.id);
     res.json(notes);
 })
