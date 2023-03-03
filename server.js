@@ -55,7 +55,20 @@ app.post('/notes', (req, res) => {
     })
   });
   
+// Delete
+app.delete('/api/notes/:id', (req, data) => {
+    const deleteId = parseInt(req.params.id);
+    let dataArray = data;
 
+    const deleteIndex = data.Array.indexOf(deleteId);
+    if (deleteIndex > -1) {
+        dataArray.splice(deleteIndex, 1);
+        console.log("Note at ID# ${deleteId} removed!")
+        document.location.reload();
+    } else {
+        console.log("ID# {$deleteId} not found in database!")
+    }
+});
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}!`);
