@@ -22,10 +22,9 @@ const hide = (elem) => {
   elem.style.display = 'none';
 };
 
-// activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
-//Gets all the notes from the database
+// GET
 const getNotes = () =>
   fetch('/api/notes', {
     method: 'GET',
@@ -34,9 +33,9 @@ const getNotes = () =>
     },
   });
 
-//Saves note to database
+// POST
 const saveNote = (note) =>
-  fetch('/api/notes', {
+  fetch('/notes', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -44,16 +43,12 @@ const saveNote = (note) =>
     body: JSON.stringify(note),
   });
 
-//Deletes note from database
+// DELETE
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    method: 'DELETE'
   });
 
-// if there is an active note, displays it
 const renderActiveNote = () => {
   hide(saveNoteBtn);
 
@@ -70,11 +65,11 @@ const renderActiveNote = () => {
   }
 };
 
-// Get note data from inputs, saves it to the database and updates view
 const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
     text: noteText.value,
+    id: Math.floor(Math.random()*201)
   };
   saveNote(newNote).then(() => {
     getAndRenderNotes();
@@ -84,7 +79,6 @@ const handleNoteSave = () => {
 
 // Delete the clicked note
 const handleNoteDelete = (e) => {
-  // Prevents the click listener for the list from being called when the button inside of it is clicked
   e.stopPropagation();
 
   const note = e.target;
@@ -100,20 +94,19 @@ const handleNoteDelete = (e) => {
   });
 };
 
-// Sets the activeNote and displays it
+// Sets the active note and displays it
 const handleNoteView = (e) => {
   e.preventDefault();
   activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
   renderActiveNote();
 };
 
-// Sets the activeNote to and empty object and allows the user to enter a new note
+// Sets the activeNote to an empty object and allows the user to enter a new note
 const handleNewNoteView = (e) => {
   activeNote = {};
   renderActiveNote();
 };
 
-// If a note's title or text are empty, hide the save button
 const handleRenderSaveBtn = () => {
   if (!noteTitle.value.trim() || !noteText.value.trim()) {
     hide(saveNoteBtn);
@@ -176,7 +169,7 @@ const renderNoteList = async (notes) => {
   }
 };
 
-// Gets notes from the db and renders them to the sidebar
+// Gets notes from the database and renders them to the sidebar
 const getAndRenderNotes = () => getNotes().then(renderNoteList);
 
 if (window.location.pathname === '/notes') {
