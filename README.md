@@ -22,8 +22,8 @@ https://devcenter.heroku.com/articles/heroku-cli#download-and-install
 You can find the deployed Heroku application here: https://note-taker-030223.herokuapp.com/
 
 # Screenshots
-![Index](Note-Taker\public\assets\images\note-taker-index.png)
-![Test Page](Note-Taker\public\assets\images\note-taker-test.png)
+[Index](Note-Taker\public\assets\images\note-taker-index.png)
+[Test Page](Note-Taker\public\assets\images\note-taker-test.png)
 
 # Contributing
 Used the following starter code which included front-end framework: https://github.com/coding-boot-camp/miniature-eureka
